@@ -1,7 +1,6 @@
-from functions_practice import word_count, is_even
+import requests
 
-sentence = "I am learning Python and AI engineering"
-number = 10
-
-print("Word count:", word_count(sentence))
-print("Is the number even?", is_even(number))
+response = requests.get("https://httpbin.org/get", params={"q":"test"},timeout=10)
+response.raise_for_status()
+data=response.json()
+print(data["args"])
